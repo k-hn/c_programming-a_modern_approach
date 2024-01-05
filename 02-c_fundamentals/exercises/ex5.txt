@@ -1,0 +1,4 @@
+(a) 100_bottles -> invalid
+(b) _100_bottles -> valid
+(c) one__hundred__bottles -> valid
+(d) bottles_by_the_hundred_ -> valid

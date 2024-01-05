@@ -1,0 +1,2 @@
+using more than one adjacent underscore might make it difficult to determine the exact number
+of underscores in an identifier.
