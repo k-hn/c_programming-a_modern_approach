@@ -1,0 +1,4 @@
+sizeof(a) / sizeof(a[0]) does not need to be changed when the type of array a is changed
+
+for sizeof (a) / sizeof(t) - the writer/reader will have to trace the code to find the type of array a for this
+expression to ensure its correctness.
