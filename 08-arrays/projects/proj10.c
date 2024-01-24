@@ -1,138 +1,66 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 int convert_to_minutes(int hours, int minutes) {
   return hours * 60 + minutes;
 }
 
-int get_closest_index(int minutes) {
-  /* start point */
-  int closest_depature_index = 0;
-  int difference = abs(convert_to_minutes(8, 0) - minutes);
-
-  /* 9:43 am */
-  if (abs(convert_to_minutes(9, 43) - minutes) < difference) {
-    closest_depature_index = 1;
-    difference = abs(convert_to_minutes(9, 43) - minutes);
+int *minutes_to_meridiem(int minutes, int result_arr[]) {
+  int hours = minutes / 60;
+  int mins = minutes % 60;
+  bool pm = false;
+  if (hours < 12) {
+    if (hours == 0) {
+      hours = 12;
+    }
+    pm = false;
+  } else if (hours > 12) {
+    pm = true;
+    hours -= 12;
+  } else {
+    pm = true;
   }
 
-  /* 11:19 am */
-  if (abs(convert_to_minutes(11, 19) - minutes) < difference) {
-    closest_depature_index = 2;
-    difference = abs(convert_to_minutes(11, 19) - minutes);
-  }
-
-  /* 12:47 pm */
-  if (abs(convert_to_minutes(12, 47) - minutes) < difference) {
-    closest_depature_index = 3;
-    difference = abs(convert_to_minutes(12, 47) - minutes);
-  }
-
-  /* 2:00 pm */
-  if (abs(convert_to_minutes(14, 00) - minutes) < difference) {
-    closest_depature_index = 4;
-    difference = abs(convert_to_minutes(14, 00) - minutes);
-  }
-
-  /* 3:45 pm */
-  if (abs(convert_to_minutes(15, 45) - minutes) < difference) {
-    closest_depature_index = 5;
-    difference = abs(convert_to_minutes(15, 45) - minutes);
-  }
-
-  /* 7:00 pm */
-  if (abs(convert_to_minutes(19, 00) - minutes) < difference) {
-    closest_depature_index = 6;
-    difference = abs(convert_to_minutes(19, 00) - minutes);
-  }
-
-  /* 9:45 pm */
-  if (abs(convert_to_minutes(21, 45) - minutes) < difference) {
-    closest_depature_index = 7;
-    difference = abs(convert_to_minutes(21, 45) - minutes);
-  }
-
-  return closest_depature_index;
-}
-
-char *index_to_depature(int index) {
-  char * result = "";
-  
-  switch(index) {
-  case 0:
-    result = "8:00 am";
-    break;
-  case 1:
-    result = "9:43 am";
-    break;
-  case 2:
-    result = "11:19 am";
-    break;
-  case 3:
-    result = "12:47 pm";
-    break;
-  case 4:
-    result = "2:00 pm";
-    break;
-  case 5:
-    result = "3:45 pm";
-    break;
-  case 6:
-    result = "7:00 pm";
-    break;
-  case 7:
-    result = "9:45 pm";
-    break;
-  }
-
-  return result;
-}
-
-char *index_to_arrival(int index) {
-  char * result = "";
-  
-  switch(index) {
-  case 0:
-    result = "10:16 am";
-    break;
-  case 1:
-    result = "11:52 am";
-    break;
-  case 2:
-    result = "1:31 pm";
-    break;
-  case 3:
-    result = "3:00 pm";
-    break;
-  case 4:
-    result = "4:08 pm";
-    break;
-  case 5:
-    result = "5:55 pm";
-    break;
-  case 6:
-    result = "9:20 pm";
-    break;
-  case 7:
-    result = "11:58 pm";
-    break;
-  }
-
-  return result;
+  result_arr[0] = hours;
+  result_arr[1] = mins;
+  result_arr[2] = true;
+  return result_arr;
 }
 
 int main(void) {
-  int hours, minutes, minutes_since_midnight, closest_index;
-
-  printf("Enter a 24-hour time: ");
-  scanf("%d:%d", &hours, &minutes);
-
-  minutes_since_midnight = convert_to_minutes(hours, minutes);
-
-  closest_index = get_closest_index(minutes_since_midnight);
-  printf("Closest departure time is %s, arriving at %s\n",
-	 index_to_depature(closest_index),
-	 index_to_arrival(closest_index));
+  int input_hours, input_minutes, input_in_minutes, closest_index;
+  int departure_times[] = {480, 583, 679,
+			   767, 840, 945,
+			   1140, 1305};	/* stored as minutes since midnight */
+  int arrival_times[] = {616, 712, 811,
+			 900, 968, 1075,
+			 1280, 1438};
+  int closest_departure_index = 0;
   
+  printf("Enter a 24-hour time: ");
+  scanf("%d:%d", &input_hours, &input_minutes);
+  input_in_minutes = convert_to_minutes(input_hours, input_minutes);
+
+  for (int i = 0; i < sizeof(departure_times) / sizeof(departure_times[0]); i++) {
+    int diff = abs(input_in_minutes - departure_times[i]);
+    int old_diff = abs(input_in_minutes - departure_times[closest_index]);
+    if (diff < old_diff) {
+      closest_index = i;
+    }
+  }
+
+  int departure_result[3];
+  int arrival_result[3];
+  minutes_to_meridiem(departure_times[closest_index], departure_result);
+  minutes_to_meridiem(arrival_times[closest_index], arrival_result);
+  printf("Closes departure time is %.2d:%.2d %s, ariving at %.2d:%.2d %s\n",
+	 departure_result[0],
+	 departure_result[1],
+	 departure_result[2] ? "p.m." : "a.m.",
+	 arrival_result[0],
+	 arrival_result[1],
+	 arrival_result[2] ? "p.m." : "a.m.");
+    
   return EXIT_SUCCESS;
 }
