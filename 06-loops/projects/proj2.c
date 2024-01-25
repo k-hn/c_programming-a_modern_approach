@@ -2,16 +2,10 @@
 #include <stdlib.h>
 
 int get_gcd(int m, int n) {
-  int result, remainder;
-
   if (n == 0) {
     return m;
   } else {
-    // remainder = m % n;
-    // m = n;
-    // n = remainder;
-    // get_gcd(m, n);
-    get_gcd(n, m % n);
+    return get_gcd(n, m % n);
   }
 }
 
