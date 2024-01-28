@@ -24,11 +24,11 @@ float get_tax_payable(float income) {
 int main(void) {
   float income, tax_payable;
 
-  printf("Enter taxable income: ");
+  printf("Enter taxable income($): ");
   scanf("%f", &income);
 
   tax_payable = get_tax_payable(income);
-  printf("Tax payable: %.2f\n", tax_payable);
+  printf("Tax payable: $%.2f\n", tax_payable);
   
   return EXIT_SUCCESS;
 }
