@@ -26,9 +26,7 @@ int main(void) {
     }
   }
 
-  printf("n: %d\n", n);
   for (int i = 1; i <= n * n; i++) {
-    printf("row: %d | col: %d\n", row, col);
     arr[row][col] = i;
 
     /* determine intended spot to place next value */
@@ -48,7 +46,7 @@ int main(void) {
   /* Print out magic squares */
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < n; j++) {
-      printf("%d\t", arr[i][j]);
+      printf("%4d\t", arr[i][j]);
     }
     printf("\n");
   }
