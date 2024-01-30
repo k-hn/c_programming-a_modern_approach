@@ -1,0 +1,4 @@
+(a) In f:  global b, global c, local b, d are visible
+(b) In g: global b, global c, parameter a, local c are visible
+(c) In block in which a and d are declared: global b, global c, parameter a, parent scope c, local a, local d
+(d) In main: global b, global c, local c, local d

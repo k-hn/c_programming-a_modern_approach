@@ -1,0 +1,3 @@
+An unlimited number of variables named i
+There could be one in the global scope
+and subsequent i variables: one per declared scope
