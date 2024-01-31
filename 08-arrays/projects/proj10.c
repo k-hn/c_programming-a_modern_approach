@@ -24,7 +24,7 @@ int *minutes_to_meridiem(int minutes, int result_arr[]) {
 
   result_arr[0] = hours;
   result_arr[1] = mins;
-  result_arr[2] = true;
+  result_arr[2] = pm;
   return result_arr;
 }
 
