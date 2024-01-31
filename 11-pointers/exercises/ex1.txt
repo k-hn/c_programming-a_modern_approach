@@ -1,0 +1,11 @@
+Context: p -> i
+
+Aliases for i:
+(a) *p - valid
+(b) &p - invalid
+(c) *&p - invalid
+(d) &*p - invalid
+(e) *i - invalid
+(f) &i - invalid
+(g) *&i - valid
+(h) &*i - invalid

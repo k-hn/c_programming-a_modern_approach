@@ -1,0 +1,15 @@
+Context:
+int i;
+int *p = &i;
+int *q = &i;
+
+Assignments:
+(a) p = i; - Invalid
+(b) *p = &i; - Invalid
+(c) &p = q; - Invalid
+(d) p = &q; - Invalid
+(e) p = *&q; - Valid
+(f) p = q; - Valid
+(g) p = *q; - Invalid
+(h) *p = q; - Invalid
+(i) *p = *q - Valid
