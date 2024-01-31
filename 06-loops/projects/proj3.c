@@ -5,7 +5,7 @@ int get_gcd(int m, int n) {
   if (n == 0) {
     return m;
   } else {
-    get_gcd(n, m % n);
+    return get_gcd(n, m % n);
   }
 }
 
