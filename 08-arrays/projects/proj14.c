@@ -4,7 +4,6 @@
 #define INPUT_SIZE 100
 
 void print_word(char sentence[], int start_index, int sentence_length) {
-  /* int senetence_length = sizeof(sentence) / sizeof(sentence[0]); */
   if (sentence[start_index] == ' ') {
     start_index++;
   }
