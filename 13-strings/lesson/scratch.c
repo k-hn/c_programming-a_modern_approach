@@ -5,6 +5,7 @@
 int main(void) {
   printf("When you come to a fork in the road, take it. "
 	 "--Yogi Berra\n");
-
+  printf("\xfc" "ber\n");
+  
   return EXIT_SUCCESS;
 }
