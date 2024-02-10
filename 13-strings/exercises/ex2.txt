@@ -1,0 +1,4 @@
+(a) putchar(p);		-> Invalid; putchar requires a character, string provided
+(b) putchar(*p);	-> Valid; Output: a;
+(c) puts(p);		-> Valid; Output: abc;
+(d) puts(*p);		-> Invalid; puts requires a string, character provided

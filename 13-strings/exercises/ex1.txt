@@ -1,0 +1,11 @@
+(a) printf("%c", '\n'); -> Valid
+(b) printf("%c", "\n"); -> Invalid; format specifier requires character, string provided
+(c) printf("%s", '\n'); -> Invalid; format specifier requires string, character provided
+(d) printf("%s", "\n"); -> Valid
+(e) printf('\n'); 	-> Invalid; printf requires a string, character provided
+(f) printf("\n");	-> Valid
+(g) putchar('\n');	-> Valid
+(h) putchar("\n");	-> Invalid; putchar requires a character, string provided
+(i) puts('\n');		-> Invalid; puts requires a string, character provided
+(j) puts("\n");		-> Valid
+(k) puts("");		-> Valid

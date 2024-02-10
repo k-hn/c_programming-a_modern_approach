@@ -1,0 +1,4 @@
+(a) *str = 0;		-> Results in empty string
+(b) str[0] = '\0';	-> Results in empty string
+(c) strcpy(str, "");	-> Results in empty string
+(d) strcat(str, "");	-> Does not result in empty string. Appends empty string to str
