@@ -1,0 +1,5 @@
+(a) #if M		- passes
+(b) #ifdef M		- passes
+(c) #ifndef M		- fails
+(d) #if defined(M) 	- passes
+(e) #if !defined(M)	- fails
