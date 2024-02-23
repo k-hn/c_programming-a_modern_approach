@@ -1,0 +1,8 @@
+Advantages:
+1. Time is saved on compilation when only a few files out of the lot are edited.
+2. Assuming the files are separated logically, making changes are likely to be easier.
+
+Disadvantages:
+1. Could result in many files being created
+2. Splitting programs, small ones especially, could make it a bit more challenging to follow the
+   logic of the program.

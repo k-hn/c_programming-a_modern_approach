@@ -1,0 +1,12 @@
+(a)
+All files
+
+(b)
+f1.c changed: f1.c
+
+(c)
+f1.h changed: main.c, f1.c, and f2.c
+
+(d)
+f2.h changed: f1.c, and f2.c
+

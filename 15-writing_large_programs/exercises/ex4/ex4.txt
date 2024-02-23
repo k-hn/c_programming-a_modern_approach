@@ -1,0 +1,18 @@
+(a)
+Output if DEBUG is defined:
+value of i: 1
+value of j: 2
+value of k: 3
+value of i + j: 3
+value of 2 * i + j - k: 1
+
+(b)
+Output if DEBUG is not defined:
+
+(c)
+In (a) DEBUG is defined, and consequently the definition of PRINT_DEBUG() which outputs data.
+If DEBUG is not defined then the non-output version of PRINT_DEBUG() is defined.
+
+(d)
+It is needed else the calls to PRINT_DEBUG() will not output anything since there is a check
+in debug.h to determine which version of PRINT_DEBUG() is defined.

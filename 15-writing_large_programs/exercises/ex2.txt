@@ -1,0 +1,3 @@
+(b) Function definitions.
+If included more than once, the linker fails because it sees two function definitions with the
+same name.
