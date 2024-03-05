@@ -11,9 +11,8 @@ struct part {
   int number;
   char name[NAME_LEN + 1];
   int on_hand;
-};
-
-struct part inventory[MAX_PARTS];
+  double price;
+} inventory[MAX_PARTS];
 
 int num_parts = 0;		/* number of parts currently stored */
 
@@ -22,7 +21,6 @@ void insert(void);
 void search(void);
 void update(void);
 void print(void);
-void sort(void);
 
 /**
  * main: Prompts the user to enter an operation code,
@@ -106,6 +104,8 @@ void insert(void)
   read_line(inventory[num_parts].name, NAME_LEN);
   printf("Enter quantity on hand: ");
   scanf("%d", &inventory[num_parts].on_hand);
+  printf("Enter price per part: ");
+  scanf("%lf", &inventory[num_parts].price);
   num_parts++;
 }
 
@@ -126,6 +126,7 @@ void search(void)
   if (i >= 0) {
     printf("Part name: %s\n", inventory[i].name);
     printf("Quantity on hand: %d\n", inventory[i].on_hand);
+    printf("Price: %.2f", inventory[i].price);
   } else {
     printf("Part not found.\n");
   }
@@ -165,27 +166,9 @@ void update(void)
 void print(void)
 {
   int i;
-
-  sort();
   printf("Part Number Part Name                    "
-	 "Quantity on Hand\n");
+	 "Quantity on Hand\tPrice\n");
   for (i = 0; i < num_parts; i++)
-    printf("%7d       %-25s%11d\n", inventory[i].number,
-	   inventory[i].name, inventory[i].on_hand);
-}
-
-
-void sort(void)
-{
-  struct part temp;
-  
-  for (int i = 0; i < num_parts; i++) {
-    for (int j = i + 1; j < num_parts; j++) {
-      if (inventory[j].number < inventory[i].number) {
-	temp = inventory[i];
-	inventory[i] = inventory[j];
-	inventory[j] = temp;
-      }
-    }
-  }
+    printf("%7d       %-25s%11d\t\t%.2f\n", inventory[i].number,
+	   inventory[i].name, inventory[i].on_hand, inventory[i].price);
 }
