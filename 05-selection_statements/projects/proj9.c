@@ -14,7 +14,6 @@ int main(void) {
 
   if (date1_year < date2_year) {
     date1_is_earlier = true;
-    printf("Heyer");
     printf("%.2d/%.2d/%.2d is earlier than %d/%d/%d\n",
 	   date1_month, date1_day, date1_year, date2_month, date2_day, date2_year);
     return EXIT_SUCCESS;
